@@ -20,3 +20,22 @@ body
 	background-color : white;
 	border-radius : 3px;
 }
+
+#main-menu
+{
+	position : absolute;
+	z-index : 10;
+	
+	height : 500px;
+	width : 6px;
+	
+	background : url('../img/main_menu_right_arrow.png') no-repeat right white;
+
+	box-shadow : 4px 4px 4px #888888;
+	cursor : pointer;
+}
+
+	#main-menu:hover
+	{
+		box-shadow : 4px 4px 4px #866930;
+	}
