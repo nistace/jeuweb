@@ -52,7 +52,7 @@ function map_initialize()
 			spacing		: 0,
 			margin 		: 0},
 		"animations"	: {
-			"idle"		: [0, 1, "idle", 0.2],
+			"idle"		: [0, 1, "idle", 0.1],
 			"backward"	: [2, 4, "bacward", 0.2],
 			"forward"	: [5, 7, "forward", 0.2],
 			"left"		: [8, 10, "left", 0.2],
@@ -62,6 +62,12 @@ function map_initialize()
 	map_draw_player(playerSheet);
 	
 	map_set_ticker();
+	stage.update();
+}
+
+function map_tick()
+{
+	stage.update();
 }
 
 function map_player_handle(e)
@@ -69,19 +75,45 @@ function map_player_handle(e)
 	switch(e.which)
 	{
 		case KEY_Z :
-				
+			map_player_move_forward();
+			break;
+		case KEY_S :
+			map_player_move_backward();
+			break;
+		case KEY_D :
+			map_player_move_right();
+			break;
+		case KEY_Q :
+			map_player_move_left();
 			break;
 		default : 
 			break;
 	}
-	
-	stage.update();
 }
 
-function map_player_mode_forward()
+function map_player_move_forward()
 {
-	player = new createjs.Sprite(playerSheet, "forward");
+	alert("d");
+	player.currentAnimation = "forward";
 	player.x = player.x-1;
+}
+
+function map_player_move_backward()
+{
+	player.currentAnimation = "backward";
+	player.x = player.x+1;
+}
+
+function map_player_move_left()
+{
+	player.currentAnimation = "left";
+	player.y = player.y-1;
+}
+
+function map_player_move_right()
+{
+	player.currentAnimation = "right";
+	player.y = player.y+1;
 }
 
 /**

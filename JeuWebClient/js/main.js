@@ -33,6 +33,7 @@ $(document).ready(function(){
 jQuery(document).ready(function(){
 	// Main elements
 	var menu = jQuery("#main-menu");
+	var canvas = jQuery("#mainframe");
 	
 	// Base setup
 	utils_setup();
@@ -45,6 +46,7 @@ jQuery(document).ready(function(){
 	
 	// Keyboard events handling
 	jQuery(document).keydown(function(e){keyboard_handle(e);});
+	canvas.keypress(function(e){map_player_handle(e);e.stopPropagation();});
 });
 
 $("#buttonLogin").click(function(){
