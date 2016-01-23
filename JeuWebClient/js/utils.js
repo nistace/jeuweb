@@ -36,5 +36,5 @@ function utils_resize_canvas()
 	LINE_OF_SIGHT_LONG = (height/CASE_SIDE_SIZE);
 	LINE_OF_SIGHT_LARGE = (width/CASE_SIDE_SIZE);
 	
-	canvas.css("height", height).css("width", width).css("margin-top", top).css("margin-left", left);
+	canvas.css("height", height).css("width", width).attr("width", width).attr("height", height).css("margin-top", top).css("margin-left", left);
 }
