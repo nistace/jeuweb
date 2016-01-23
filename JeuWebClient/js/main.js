@@ -4,10 +4,10 @@ jQuery(document).ready(function(){
 	
 	// Main menu
 	var menu = jQuery("#main-menu");
-	menu.dblclick(function(){menu_visibility_show(menu);});
+	menu.click(function(){menu_visibility_show(menu);});
 	
 	// Main menu buttons
-	jQuery("#button-close").click(function(){menu_visibility_hide(menu);});
+	jQuery("#button-close").click(function(e){menu_visibility_hide(menu);e.stopPropagation();});
 	
 	// Keyboard events handling
 	jQuery(document).keydown(function(e){keyboard_handle(e);});
