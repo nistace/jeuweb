@@ -1,3 +1,7 @@
+var CASE_SIDE_SIZE = 32;
+var LINE_OF_SIGHT_LONG = 0;
+var LINE_OF_SIGHT_LARGE = 0;
+
 jQuery(document).ready(function(){
 	// Base setup
 	utils_setup();
@@ -10,5 +14,5 @@ jQuery(document).ready(function(){
 	jQuery("#button-close").click(function(e){menu_visibility_hide(menu);e.stopPropagation();});
 	
 	// Keyboard events handling
-	jQuery(document).keydown(function(e){keyboard_handle(e);});
+	jQuery(document).keydown(function(e){keyboard_handle(e);}); 
 });
