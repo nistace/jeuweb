@@ -33,6 +33,7 @@ $(document).ready(function(){
 jQuery(document).ready(function(){
 	// Main elements
 	var menu = jQuery("#main-menu");
+	var canvas = jQuery("#mainframe");
 	
 	// Base setup
 	utils_setup();
@@ -45,6 +46,7 @@ jQuery(document).ready(function(){
 	
 	// Keyboard events handling
 	jQuery(document).keydown(function(e){keyboard_handle(e);});
+<<<<<<< Updated upstream
 });
 
 $("#buttonLogin").click(function(){
@@ -94,3 +96,7 @@ function joinLobbyRoom()
 	if (sfs.lastJoinedRoom == null || sfs.lastJoinedRoom.name != CONST_ROOM_NAME)
 		sfs.send(new SFS2X.Requests.System.JoinRoomRequest(CONST_ROOM_NAME));
 }
+=======
+	canvas.keypressed(function(e){map_player_handle(e);e.stopPropagation();});
+});
+>>>>>>> Stashed changes
