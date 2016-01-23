@@ -14,11 +14,11 @@ public class GameMapLayer {
 	public GameMapLayer(int width, int height, GameMapLayer father) {
 		this.width = width;
 		this.height = height;
-		this.tiles = new GameMapTile[this.width][];
-		for (int i = 0; i < this.width; ++i) {
-			this.tiles[i] = new GameMapTile[this.height];
-			for (int j = 0; j < this.height; ++j)
-				this.tiles[i][j] = new GameMapTile(TILE_TYPE.MUD);
+		this.tiles = new GameMapTile[this.height][];
+		for (int i = 0; i < this.height; ++i) {
+			this.tiles[i] = new GameMapTile[this.width];
+			for (int j = 0; j < this.width; ++j)
+				this.tiles[i][j] = new GameMapTile(Math.random() < .2D ? TILE_TYPE.MUD : TILE_TYPE.GRASS);
 		}
 		this.father = father;
 		this.sons = new ArrayList<GameMapLayer>();

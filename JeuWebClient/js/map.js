@@ -186,7 +186,7 @@ function map_get_seable_map(posX, posY)
  */
 function map_init(parsableString)
 {
-	alert(parsableString);
+	map = JSON.parse(parsableString);
 }
 
 /**
