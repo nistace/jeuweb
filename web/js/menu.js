@@ -27,6 +27,7 @@ function menu_visibility_show(menu)
 	menu.animate({
 		width : "200px"
 	}, 600);
+	setTimeout(function(){jQuery("#main-menu-content").css("display", "block");}, 600);
 }
 
 /**
@@ -36,6 +37,7 @@ function menu_visibility_show(menu)
 
 function menu_visibility_hide(menu)
 {
+	jQuery("#main-menu-content").css("display", "none");
 	menu.css('background-image', 'url("./img/main_menu_right_arrow.png")');
 	menu.animate({
 		width : "6px"
