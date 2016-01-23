@@ -10,4 +10,8 @@ public class GameMapTile {
 	public boolean isObstacle() {
 		return type.in(TILE_TYPE.HOLE, TILE_TYPE.WALL, TILE_TYPE.WATER);
 	}
+
+	public TILE_TYPE getType() {
+		return type;
+	}
 }
