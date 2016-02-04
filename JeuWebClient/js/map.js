@@ -53,7 +53,7 @@ function map_initialize()
 			margin 		: 0},
 		"animations"	: {
 			"idle"		: [0, 1, "idle", 0.1],
-			"backward"	: [2, 4, "bacward", 0.2],
+			"backward"	: [2, 4, "backward", 0.2],
 			"forward"	: [5, 7, "forward", 0.2],
 			"left"		: [8, 10, "left", 0.2],
 			"right"		: [11, 13, "right", 0.2]
@@ -93,7 +93,6 @@ function map_player_handle(e)
 
 function map_player_move_forward()
 {
-	alert("d");
 	player.currentAnimation = "forward";
 	player.x = player.x-1;
 }
