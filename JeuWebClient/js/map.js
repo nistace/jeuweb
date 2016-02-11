@@ -52,16 +52,16 @@ function map_initialize()
 			spacing		: 0,
 			margin 		: 0},
 		"animations"	: {
-			"idle"		: [0, 1, "idle", 0.2]/*,
+			"idle"		: [0, 1, "idle", 0.2],
 			"backward"	: [2, 4, "backward", 0.2],
 			"forward"	: [5, 7, "forward", 0.2],
 			"left"		: [8, 10, "left", 0.2],
-			"right"		: [11, 13, "right", 0.2]*/
+			"right"		: [11, 13, "right", 0.2]
 		}
 	});
 	
 	map_draw_player(playerSheet);
-	//map_set_ticker();
+	map_set_ticker();
 	stage.update();
 }
 
@@ -160,7 +160,7 @@ function map_draw_player(playerSheet)
 function map_set_ticker()
 {
 	createjs.Ticker.timingMode = createjs.Ticker.RAF;
-	createjs.Ticker.addEventListener("tick", map_player_handle);
+	createjs.Ticker.addEventListener("tick", map_tick);
 }
 
 /**

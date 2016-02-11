@@ -8,7 +8,7 @@ var CONST_PORT = 8888;
 
 var sfs = null;
 
-/*$(document).ready(function(){
+$(document).ready(function(){
 	// Configuration (valeurs par défaut)
 	var config 		= {};
 	config.host 	= CONST_HOST;
@@ -36,7 +36,7 @@ var sfs = null;
 	$("#buttonReady").click(function(){
 		sfs.send( new SFS2X.Requests.System.ExtensionRequest("ready", {}, sfs.lastJoinedZone) )
 	});
-});*/
+});
 
 jQuery(document).ready(function(){
 	// Main elements
@@ -57,10 +57,6 @@ jQuery(document).ready(function(){
 	canvas.keypress(function(e){map_player_handle(e);e.stopPropagation();});
 });
 
-// Nathan : j'ai déplacé les onClick() plus haut, tu les avais mises ici mais les déplacer
-// dans le document.ready() permet de s'assurer que les scripts ne soient pas lancés avant
-// que tous les éléments de la page soient chargés
-// William
 
 function onExtensionResponse(evt)
 {
