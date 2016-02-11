@@ -52,16 +52,16 @@ function map_initialize()
 			spacing		: 0,
 			margin 		: 0},
 		"animations"	: {
-			"idle"		: [0, 1, "idle", 0.1],
+			"idle"		: [0, 1, "idle", 0.2]/*,
 			"backward"	: [2, 4, "backward", 0.2],
 			"forward"	: [5, 7, "forward", 0.2],
 			"left"		: [8, 10, "left", 0.2],
-			"right"		: [11, 13, "right", 0.2]
+			"right"		: [11, 13, "right", 0.2]*/
 		}
 	});
-	map_draw_player(playerSheet);
 	
-	map_set_ticker();
+	map_draw_player(playerSheet);
+	//map_set_ticker();
 	stage.update();
 }
 
@@ -126,7 +126,7 @@ function map_draw(backgroundSheet)
 	{
 		for(var i = 0; i < map.length; i++)
 		{
-			for(var j = 0; j < map[0].length; j++)
+			for(var j = 0; j < map[i].length; j++)
 			{
 				var idx = map[i][j];
 				var tile = new createjs.Sprite(backgroundSheet);
