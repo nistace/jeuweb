@@ -25,17 +25,12 @@ $(document).ready(function(){
 	sfs.addEventListener(SFS2X.SFSEvent.LOGIN_ERROR, onLoginError, this);
 	sfs.addEventListener(SFS2X.SFSEvent.LOGIN, onLogin, this);
 	sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, onExtensionResponse);
+	sfs.addEventListener("CONNECTED_USER", onConnectedUser);
 	
 	// Connexion au serveur (Pas encore à la zone, pas encore de login)
 	sfs.connect();
 	
-	$("#buttonLogin").click(function(){
-		sfs.send(new SFS2X.Requests.System.LoginRequest("blobby"));
-	});
-
-	$("#buttonReady").click(function(){
-		sfs.send( new SFS2X.Requests.System.ExtensionRequest("ready", {}, sfs.lastJoinedZone) )
-	});
+	$("#buttonLogin").click(sendLogin);
 });
 
 jQuery(document).ready(function(){
@@ -67,6 +62,24 @@ function onExtensionResponse(evt)
 		map_init(params["map"]);
 		map_initialize();
 	}
+	else if (cmd === "CONNECTED_USER")
+	{
+		alert (evt.params.USR_Blob);
+		$("#game_screen").css("display", "");
+		$("#connect_screen").css("display", "none");
+	}
+}
+
+function sendLogin()
+{
+	var login = $('#connect_name').val();
+	if (!login)
+		$('#connect_name').addClass("error");
+	else
+	{
+		utils_replace_elem_loading($("#buttonLogin"));
+		sfs.send(new SFS2X.Requests.System.LoginRequest(login));
+	}	
 }
 
 /**
@@ -74,12 +87,13 @@ function onExtensionResponse(evt)
  **/
 function onLogin(event)
 {
-	alert("Login successful!" +
-		  "\n\tZone: " + event.zone +
-		  "\n\tUser: " + event.user +
-		  "\n\tData: " + event.data);
-	// On rejoint la room
-	joinLobbyRoom();
+	if (sfs.lastJoinedRoom == null || sfs.lastJoinedRoom.name != CONST_ROOM_NAME)
+		sfs.send(new SFS2X.Requests.System.JoinRoomRequest(CONST_ROOM_NAME));
+	sfs.send( new SFS2X.Requests.System.ExtensionRequest("ACCESS_LOG_ROOM", {}, sfs.lastJoinedZone) )
+}
+
+function onConnectedUser(event)
+{
 }
 
 /**
@@ -93,6 +107,4 @@ function onLoginError(event)
 
 function joinLobbyRoom()
 {
-	if (sfs.lastJoinedRoom == null || sfs.lastJoinedRoom.name != CONST_ROOM_NAME)
-		sfs.send(new SFS2X.Requests.System.JoinRoomRequest(CONST_ROOM_NAME));
 }

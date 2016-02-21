@@ -4,21 +4,31 @@
 		<link rel='stylesheet' type='text/css' href='./css/jeuweb.css'/>
 	</head>
 	<body>
-		<div id='main-menu'>
-			<div id='main-menu-content'>
-				<div id='main-menu-zone-login'><p>Status du joueur</p></div>
-				<div id='main-menu-zone-button'>
-					<p id='buttonLogin'>Login</p>
-					<p id='buttonReady'>Ready</p>
-					<p>Bouton 3</p>
-					<p>Bouton 4</p>
-					<p id='button-close'>Fermer le menu</p>
+		<div id='game_screen' style='display:none;'>
+			<div id='main-menu'>
+				<div id='main-menu-content'>
+					<div id='main-menu-zone-login'><p>Status du joueur</p></div>
+					<div id='main-menu-zone-button'>
+						<p id='buttonReady'>Ready</p>
+						<p>Bouton 3</p>
+						<p>Bouton 4</p>
+						<p id='button-close'>Fermer le menu</p>
+					</div>
+				<div id='main-menu-zone-hint'><p class='hint'>Appuyez sur ESC pour afficher/cacher ce menu</p></div>
 				</div>
-			<div id='main-menu-zone-hint'><p class='hint'>Appuyez sur ESC pour afficher/cacher ce menu</p></div>
+			</div>
+			
+			<canvas id='mainframe'>Ce navigateur ne supporte pas les canvas. Il est temps de changer !</canvas>
+		</div>
+		<div id='connect_screen'>
+			<div id='connect_screen'>
+				<div class='box'>
+					<label for='connect_name'>Login : </label><input type='text' id='connect_name'/>
+					<button id='buttonLogin' class='primary'>Se connecter</button>
+				</div>
 			</div>
 		</div>
 		
-		<canvas id='mainframe'>Ce navigateur ne supporte pas les canvas. Il est temps de changer !</canvas>
 		
 		<script type="text/javascript" src='js/EaselJs.js'></script>
 		<script type="text/javascript" src='js/jquery.js'></script>
