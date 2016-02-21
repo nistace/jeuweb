@@ -70,27 +70,6 @@ function map_tick()
 	stage.update();
 }
 
-function map_player_handle(e)
-{
-	switch(e.which)
-	{
-		case KEY_Z :
-			map_player_move_forward();
-			break;
-		case KEY_S :
-			map_player_move_backward();
-			break;
-		case KEY_D :
-			map_player_move_right();
-			break;
-		case KEY_Q :
-			map_player_move_left();
-			break;
-		default : 
-			break;
-	}
-}
-
 function map_player_move_forward()
 {
 	player.currentAnimation = "forward";
