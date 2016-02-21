@@ -34,7 +34,7 @@ $(document).ready(function(){
 	});
 
 	$("#buttonReady").click(function(){
-		sfs.send( new SFS2X.Requests.System.ExtensionRequest("ready", {}, sfs.lastJoinedZone) )
+		sfs.send(new SFS2X.Requests.System.ExtensionRequest("ready", {}, sfs.lastJoinedZone));
 	});
 });
 
@@ -74,10 +74,10 @@ function onExtensionResponse(evt)
  **/
 function onLogin(event)
 {
-	alert("Login successful!" +
+	/*alert("Login successful!" +
 		  "\n\tZone: " + event.zone +
 		  "\n\tUser: " + event.user +
-		  "\n\tData: " + event.data);
+		  "\n\tData: " + event.data);*/
 	// On rejoint la room
 	joinLobbyRoom();
 }
