@@ -43,7 +43,7 @@ public class JeuWebExtension extends SFSExtension {
 		trace("JeuWeb Extension for SFS2X started, rel. " + version);
 		users = new ArrayList<JeuWebUser>();	
 		initColors();
-		addRequestHandler("move", MoveHandler.class);
+		addRequestHandler("movement", MoveHandler.class);
 		addRequestHandler("ACCESS_LOG_ROOM", JoinRoomHandler.class);
 		addRequestHandler("LOG_ROOM_READY", ReadyHandler.class);
 	}
@@ -51,13 +51,6 @@ public class JeuWebExtension extends SFSExtension {
 	public void start() {
 		this.map = new GameMap(1);
 		
-	}
-	
-	public void movements()
-	{
-		ISFSObject respObj = new SFSObject();
-		respObj.putUtfString("movement", "Player has moved");
-		this.send("player_movement", respObj, (List<User>) getParentZone().getUserList());
 	}
 
 	public JeuWebUser addUser(User user) {

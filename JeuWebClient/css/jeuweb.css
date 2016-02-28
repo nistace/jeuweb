@@ -104,8 +104,7 @@ div.box
 	font-family : RomanFont7;
 }
 
-	#main-menu-zone-button p, button
-	{
+	#main-menu-zone-button p, button	{
 		text-align : center;
 		
 		width : 80%;
