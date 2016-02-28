@@ -30,6 +30,7 @@ public class JoinRoomHandler extends BaseClientRequestHandler {
 				array.addUtfString(oUser.getUser().getName());
 				usersNames.addUtfString(oUser.getUser().getName());
 				array.addUtfString(oUser.getStatus().name());
+				array.addUtfString(oUser.getColor().toString());
 				respObj.putSFSArray("USR_" + oUser.getUser().getName(), array);
 			}
 			respObj.putSFSArray("USERS_NAMES", usersNames);

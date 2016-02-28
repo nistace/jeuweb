@@ -41,4 +41,12 @@ function cnct_drawConnectionScreen(parameters)
 	
 	$("#connect_main_box").empty();
 	$("#connect_main_box").append(div);
+	
+	var buttonReady = $("<button></button>");
+	buttonReady.append("Prêt");
+	buttonReady.attr("id", "buttonReady");
+	buttonReady.addClass("primary");
+	buttonReady.click(function(){sfs.send(new SFS2X.Requests.System.ExtensionRequest("LOG_ROOM_READY", {}, sfs.lastJoinedZone));});
+	
+	$("#connect_main_box").append(buttonReady);
 }

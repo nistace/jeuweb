@@ -14,6 +14,7 @@ import jeuweb.server.data.connection.JeuWebUser;
 import jeuweb.server.data.game.GameMap;
 import jeuweb.server.handlers.JoinRoomHandler;
 import jeuweb.server.handlers.MoveHandler;
+import jeuweb.server.handlers.ReadyHandler;
 
 public class JeuWebExtension extends SFSExtension {
 
@@ -44,15 +45,12 @@ public class JeuWebExtension extends SFSExtension {
 		initColors();
 		addRequestHandler("move", MoveHandler.class);
 		addRequestHandler("ACCESS_LOG_ROOM", JoinRoomHandler.class);
+		addRequestHandler("LOG_ROOM_READY", ReadyHandler.class);
 	}
 
 	public void start() {
 		this.map = new GameMap(1);
 		
-		ISFSObject respObj = new SFSObject();
-		respObj.putUtfString("map", this.map.getLayerLeaves().get(0).toString());
-		
-		this.send("create_map", respObj, (List<User>) getParentZone().getUserList());
 	}
 	
 	public void movements()
@@ -63,12 +61,16 @@ public class JeuWebExtension extends SFSExtension {
 	}
 
 	public JeuWebUser addUser(User user) {
-		JeuWebUser newUser = new JeuWebUser(user, Color.BLACK);
+		JeuWebUser newUser = new JeuWebUser(user, availableColors.remove(0));
 		this.users.add(newUser);
 		return newUser;
 	}
 
 	public final Collection<JeuWebUser> getAllUsers() {
 		return this.users;
+	}
+
+	public GameMap getMap() {
+		return this.map;
 	}
 }

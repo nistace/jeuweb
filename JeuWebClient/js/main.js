@@ -61,14 +61,14 @@ function onExtensionResponse(evt)
 		case "create_map" : 
 			map_init(params["map"]);
 			map_initialize();
+			$("#game_screen").css("display", "");
+			$("#connect_screen").css("display", "none");
 			break;
 		case "player_movement" : 
 			alert(params["movement"]);
 			break;
 		case "CONNECTED_USER" : 
 			alert (evt.params.USR_Blob);
-			$("#game_screen").css("display", "");
-			$("#connect_screen").css("display", "none");
 			break;
 		case "CONNECTION_SUCCESSFUL" : 
 			cnct_drawConnectionScreen(evt.params);
