@@ -1,4 +1,4 @@
-package jeuweb.server.data;
+package jeuweb.server.data.game;
 
 import java.util.List;
 

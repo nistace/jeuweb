@@ -1,4 +1,4 @@
-package jeuweb.server.data;
+package jeuweb.server.data.game;
 
 public class GameMapTile {
 	private final TILE_TYPE type;

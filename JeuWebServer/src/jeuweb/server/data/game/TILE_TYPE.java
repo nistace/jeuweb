@@ -1,4 +1,4 @@
-package jeuweb.server.data;
+package jeuweb.server.data.game;
 
 public enum TILE_TYPE {
 	MUD, GRASS, WALL, WATER, HOLE;

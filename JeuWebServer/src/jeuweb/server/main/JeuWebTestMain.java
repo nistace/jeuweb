@@ -1,6 +1,6 @@
 package jeuweb.server.main;
 
-import jeuweb.server.data.GameMap;
+import jeuweb.server.data.game.GameMap;
 
 public class JeuWebTestMain {
 	public static void main(String[] args) {

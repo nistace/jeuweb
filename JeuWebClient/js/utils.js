@@ -38,3 +38,24 @@ function utils_resize_canvas()
 	
 	canvas.css("height", height).css("width", width).attr("width", width).attr("height", height).css("margin-top", top).css("margin-left", left);
 }
+
+function utils_replace_elem_loading (elem)
+{
+	var div = $("<div>");
+	div.addClass("loading");
+	var img = $("<img/>");
+	img.attr("src", "./img/loading.gif");
+	div.append(img);
+	div.append(" Chargement...")
+	elem.before(div);
+	elem.css("display", "none");
+	div.append(elem)
+}
+
+function utils_cancel_replace_elem_loading (elem)
+{
+	var loading = elem.parent();
+	loading.after(elem);
+	loading.remove();
+	elem.css("display", "");
+}
