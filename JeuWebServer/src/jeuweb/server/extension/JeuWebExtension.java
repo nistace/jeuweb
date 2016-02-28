@@ -1,8 +1,11 @@
 package jeuweb.server.extension;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.smartfoxserver.v2.entities.User;
 import com.smartfoxserver.v2.entities.data.ISFSObject;
@@ -19,11 +22,19 @@ public class JeuWebExtension extends SFSExtension {
 	private final String	version	= "0.0.1";
 	private GameMap			map;
 	private Collection<JeuWebUser> users;
+	private List<Color> availableColors;
+	
+	private void initColors()
+	{
+		availableColors = new ArrayList<Color>();
+		availableColors.add(Color.BLACK);
+	}
 	
 	@Override 
 	public void init() {
 		trace("JeuWeb Extension for SFS2X started, rel. " + version);
 		users = new ArrayList<JeuWebUser>();	
+		initColors();
 		addRequestHandler("move", MoveHandler.class);
 		addRequestHandler("ACCESS_LOG_ROOM", JoinRoomHandler.class);
 	}
@@ -38,7 +49,7 @@ public class JeuWebExtension extends SFSExtension {
 	}
 
 	public JeuWebUser addUser(User user) {
-		JeuWebUser newUser = new JeuWebUser(user);
+		JeuWebUser newUser = new JeuWebUser(user, Color.BLACK);
 		this.users.add(newUser);
 		return newUser;
 	}
