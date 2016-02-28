@@ -25,7 +25,6 @@ $(document).ready(function(){
 	sfs.addEventListener(SFS2X.SFSEvent.LOGIN_ERROR, onLoginError, this);
 	sfs.addEventListener(SFS2X.SFSEvent.LOGIN, onLogin, this);
 	sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, onExtensionResponse);
-	sfs.addEventListener("CONNECTED_USER", onConnectedUser);
 	
 	// Connexion au serveur (Pas encore à la zone, pas encore de login)
 	sfs.connect();
@@ -64,9 +63,11 @@ function onExtensionResponse(evt)
 	}
 	else if (cmd === "CONNECTED_USER")
 	{
-		alert (evt.params.USR_Blob);
-		$("#game_screen").css("display", "");
-		$("#connect_screen").css("display", "none");
+		alert (evt.params.USER_NAMES);
+	}
+	else if (cmd === "CONNECTION_SUCCESSFUL")
+	{
+		cnct_drawConnectionScreen(evt.params);
 	}
 }
 
@@ -90,10 +91,6 @@ function onLogin(event)
 	if (sfs.lastJoinedRoom == null || sfs.lastJoinedRoom.name != CONST_ROOM_NAME)
 		sfs.send(new SFS2X.Requests.System.JoinRoomRequest(CONST_ROOM_NAME));
 	sfs.send( new SFS2X.Requests.System.ExtensionRequest("ACCESS_LOG_ROOM", {}, sfs.lastJoinedZone) )
-}
-
-function onConnectedUser(event)
-{
 }
 
 /**

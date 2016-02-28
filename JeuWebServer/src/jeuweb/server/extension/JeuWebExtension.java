@@ -27,7 +27,16 @@ public class JeuWebExtension extends SFSExtension {
 	private void initColors()
 	{
 		availableColors = new ArrayList<Color>();
+		availableColors.add(Color.GREEN);
+		availableColors.add(Color.RED);
+		availableColors.add(Color.BLUE);
+		availableColors.add(Color.YELLOW);
+		availableColors.add(Color.WHITE);
 		availableColors.add(Color.BLACK);
+		availableColors.add(Color.ORANGE);
+		availableColors.add(Color.GRAY);
+		availableColors.add(Color.MAGENTA);
+		availableColors.add(Color.PINK);
 	}
 	
 	@Override 

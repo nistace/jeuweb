@@ -180,3 +180,36 @@ button.primary {
 button.primary:hover {
 	color : #003C84;
 }
+
+table.connection {
+	width:100%;
+}
+
+	table.connection tr td {
+		width:20%;
+	}
+	
+		table.connection tr td.user {
+			border:1px solid black;
+			width:20%;
+		}
+	
+		table.connection tr td.logged {
+			background-color:white;
+		}
+		
+		table.connection tr td.ready {
+			background-color:lightgreen;
+		}
+	
+		table.connection tr td div.status {
+			height:120px;
+			padding:12px;
+		}
+	
+		table.connection tr td div.name {
+			width:100%;
+			text-align:center;
+			padding:6px;
+		}
+	

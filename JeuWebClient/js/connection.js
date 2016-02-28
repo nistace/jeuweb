@@ -1,0 +1,44 @@
+/** Connection.js : Functions managing the connection screen */
+
+function cnct_drawConnectionScreen(parameters)
+{
+	var div = $("<table></table>");
+	div.addClass("connection");
+	var count = 4;
+	var line = $("<tr></tr>");
+	for (i = 0 ; i <= count ; ++i)
+		line.append($("<td></td>"));
+	div.append(line);
+	parameters["USERS_NAMES"].forEach(function(elem){
+		if (count == 4)
+		{
+			line = $("<tr></tr>");
+			div.append(line);
+			count = 0;
+		}
+		else count++;
+		
+		var user = $("<td></td>");
+		user.attr("id", "cnct_usr_" + elem);
+		user.addClass("user");
+		user.addClass(parameters["USR_" + elem][1]);
+		
+		var usStatus = $("<div></div>");
+		usStatus.addClass("status");
+		usStatusImg = $("<img/>");
+		usStatusImg.attr("src", "./img/connection/dude.png");
+		usStatus.append(usStatusImg);
+		
+		var usName = $("<div></div>");
+		usName.addClass("name");
+		usName.append(parameters["USR_" + elem][0]);
+		
+		user.append(usStatus);
+		user.append(usName);
+		
+		line.append(user);
+	});
+	
+	$("#connect_main_box").empty();
+	$("#connect_main_box").append(div);
+}
