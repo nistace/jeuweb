@@ -54,7 +54,7 @@ jQuery(document).ready(function(){
 	
 	// Keyboard events handling
 	jQuery(document).keydown(function(e){keyboard_handle(e);});
-	canvas.keypress(function(e){map_player_handle(e);e.stopPropagation();});
+	jQuery(document).keyup(function(e){keyboard_reset_animation(e);});
 });
 
 
@@ -62,10 +62,16 @@ function onExtensionResponse(evt)
 {
 	var params = evt.params;
 	var cmd = evt.cmd;
-	if (cmd === "create_map")
+	switch(cmd)
 	{		
-		map_init(params["map"]);
-		map_initialize();
+		case "create_map" : 
+			map_init(params["map"]);
+			map_initialize();
+			break;
+		case "player_movement" : 
+			alert(params["movement"]);
+			break;
+		default : break;
 	}
 }
 

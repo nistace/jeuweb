@@ -29,5 +29,11 @@ public class JeuWebExtension extends SFSExtension {
 		respObj.putUtfString("map", this.map.getLayerLeaves().get(0).toString());
 		this.send("create_map", respObj, (List<User>) getParentZone().getUserList());
 	}
-
+	
+	public void movements()
+	{
+		ISFSObject respObj = new SFSObject();
+		respObj.putUtfString("movement", "Player has moved");
+		this.send("player_movement", respObj, (List<User>) getParentZone().getUserList());
+	}
 }

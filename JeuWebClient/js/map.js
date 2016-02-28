@@ -9,6 +9,8 @@ var playerPosX = 12;
 var playerPosY = 8;
 var map = null;
 
+var PLAYER_SPEED = 7;		// Number of pixels added to the player's position at each step
+
 /**
  * This function initialize the map
  */
@@ -52,11 +54,11 @@ function map_initialize()
 			spacing		: 0,
 			margin 		: 0},
 		"animations"	: {
-			"idle"		: [0, 1, "idle", 0.2],
-			"backward"	: [2, 4, "backward", 0.2],
-			"forward"	: [5, 7, "forward", 0.2],
-			"left"		: [8, 10, "left", 0.2],
-			"right"		: [11, 13, "right", 0.2]
+			idle		: [0, 1, "idle", 0.05],
+			backward	: [2, 4, "backward", 0.05],
+			forward		: [5, 7, "forward", 0.05],
+			left		: [8, 10, "left", 0.05],
+			right		: [11, 13, "right", 0.05]
 		}
 	});
 	
@@ -72,26 +74,26 @@ function map_tick()
 
 function map_player_move_forward()
 {
-	player.currentAnimation = "forward";
-	player.x = player.x-1;
+	player.y = player.y-PLAYER_SPEED;
+	sfs.send(new SFS2X.Requests.System.ExtensionRequest("movement", {}, sfs.lastJoinedZone));
 }
 
 function map_player_move_backward()
 {
-	player.currentAnimation = "backward";
-	player.x = player.x+1;
+	player.y = player.y+PLAYER_SPEED;
+	sfs.send(new SFS2X.Requests.System.ExtensionRequest("movement", {}, sfs.lastJoinedZone));
 }
 
 function map_player_move_left()
 {
-	player.currentAnimation = "left";
-	player.y = player.y-1;
+	player.x = player.x-PLAYER_SPEED;
+	sfs.send(new SFS2X.Requests.System.ExtensionRequest("movement", {}, sfs.lastJoinedZone));
 }
 
 function map_player_move_right()
 {
-	player.currentAnimation = "right";
-	player.y = player.y+1;
+	player.x = player.x+PLAYER_SPEED;
+	sfs.send(new SFS2X.Requests.System.ExtensionRequest("movement", {}, sfs.lastJoinedZone));
 }
 
 /**
