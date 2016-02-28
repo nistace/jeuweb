@@ -35,7 +35,7 @@ public class JeuWebExtension extends SFSExtension {
 		trace("JeuWeb Extension for SFS2X started, rel. " + version);
 		users = new ArrayList<JeuWebUser>();	
 		initColors();
-		addRequestHandler("move", MoveHandler.class);
+		addRequestHandler("movement", MoveHandler.class);
 		addRequestHandler("ACCESS_LOG_ROOM", JoinRoomHandler.class);
 	}
 
