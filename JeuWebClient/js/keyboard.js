@@ -11,6 +11,8 @@ var KEY_Q		= 81;
 var KEY_L		= 76;
 var KEY_R		= 82;
 
+var keyPressed	= false;
+
 /**
  * This function handles the events which occurs on the document
  * @param e
@@ -43,5 +45,45 @@ function keyboard_handle(e)
 		//	break;
 		default : 
 			break;
+	}
+	
+	if(keyPressed == false)
+	{
+		keyboard_handle_animation(e);
+		keyPressed = true;
+	}
+}
+
+function keyboard_handle_animation(e)
+{
+	switch(e.which)
+	{
+		case KEY_Z : 
+			player.gotoAndPlay("forward");
+			break;
+		case KEY_S : 
+			player.gotoAndPlay("backward");
+			break;
+		case KEY_Q : 
+			player.gotoAndPlay("left");
+			break;
+		case KEY_D : 
+			player.gotoAndPlay("right");
+			break;
+		default : break;
+	}
+	
+	
+}
+
+function keyboard_reset_animation(e)
+{
+	keyPressed = false;
+	switch(e.which)
+	{
+		case KEY_Z : case KEY_S : case KEY_Q : case KEY_D : 
+			player.gotoAndPlay("idle");
+			break;
+		default : break;
 	}
 }

@@ -56,6 +56,13 @@ public class JeuWebExtension extends SFSExtension {
 		
 		this.send("create_map", respObj, (List<User>) getParentZone().getUserList());
 	}
+	
+	public void movements()
+	{
+		ISFSObject respObj = new SFSObject();
+		respObj.putUtfString("movement", "Player has moved");
+		this.send("player_movement", respObj, (List<User>) getParentZone().getUserList());
+	}
 
 	public JeuWebUser addUser(User user) {
 		JeuWebUser newUser = new JeuWebUser(user, Color.BLACK);
@@ -66,5 +73,4 @@ public class JeuWebExtension extends SFSExtension {
 	public final Collection<JeuWebUser> getAllUsers() {
 		return this.users;
 	}
-
 }

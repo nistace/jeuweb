@@ -191,3 +191,5 @@
 /.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/*.tis
 /.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/*
 /.recommenders/index/http___download_eclipse_org_recommenders_models_mars_/*.lock
+
+JeuWebExtension.jar
