@@ -92,7 +92,19 @@ body
 	padding-bottom : 4px;
 }
 
-div.box {
+div.box 
+{
+	background-color:white;
+	border : grey 2px solid;
+	border-radius : 5px;
+	width : 720px;
+	margin:auto;
+	margin-top : 64px;
+	padding:22px;
+	font-family : RomanFont7;
+}
+
+	#main-menu-zone-button p, button
 	{
 		text-align : center;
 		

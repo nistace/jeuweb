@@ -70,15 +70,10 @@ function onExtensionResponse(evt)
 			$("#game_screen").css("display", "");
 			$("#connect_screen").css("display", "none");
 			break;
+		case "CONNECTION_SUCCESSFUL" : 
+			cnct_drawConnectionScreen(evt.params);
+			break;
 		default : break;
-	}
-	else if (cmd === "CONNECTED_USER")
-	{
-		alert (evt.params.USER_NAMES);
-	}
-	else if (cmd === "CONNECTION_SUCCESSFUL")
-	{
-		cnct_drawConnectionScreen(evt.params);
 	}
 }
 
