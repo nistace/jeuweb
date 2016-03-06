@@ -46,7 +46,46 @@ function cnct_drawConnectionScreen(parameters)
 	buttonReady.append("Prêt");
 	buttonReady.attr("id", "buttonReady");
 	buttonReady.addClass("primary");
-	buttonReady.click(function(){sfs.send(new SFS2X.Requests.System.ExtensionRequest("LOG_ROOM_READY", {}, sfs.lastJoinedZone));});
+	buttonReady.click(function(){sfs.send(new SFS2X.Requests.System.ExtensionRequest("LOG_ROOM_READY", {ready:true}, sfs.lastJoinedZone));});
 	
 	$("#connect_main_box").append(buttonReady);
+}
+
+function cnct_addConnectedUser(parameters)
+{
+	var lastline = $("#connect_main_box").find("table").find("tr").last();
+	if (lastline.length == 5)
+	{
+		var newLine = $("<tr></tr>");
+		lastline.after(newLine);
+		lastline = newLine;
+	}
+	
+	var user = $("<td></td>");
+	user.attr("id", "cnct_usr_" + parameters["USR"][0]);
+	user.addClass("user");
+	user.addClass(parameters["USR"][1]);
+	
+	var usStatus = $("<div></div>");
+	usStatus.addClass("status");
+	usStatusImg = $("<img/>");
+	usStatusImg.attr("src", "./img/connection/dude.png");
+	usStatus.append(usStatusImg);
+	
+	var usName = $("<div></div>");
+	usName.addClass("name");
+	usName.append(parameters["USR"][0]);
+	
+	user.append(usStatus);
+	user.append(usName);
+	
+	lastline.append(user);
+}
+
+function cnct_updateUserStatus(parameters)
+{
+	var user = $("#cnct_usr_" + parameters["USR"]);
+	user.removeClass();
+	user.addClass("user");
+	user.addClass(parameters["STATUS"]);	
 }

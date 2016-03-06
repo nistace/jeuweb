@@ -194,11 +194,11 @@ table.connection {
 			width:20%;
 		}
 	
-		table.connection tr td.logged {
+		table.connection tr td.user.LOGGED {
 			background-color:white;
 		}
 		
-		table.connection tr td.ready {
+		table.connection tr td.user.READY {
 			background-color:lightgreen;
 		}
 	

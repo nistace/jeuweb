@@ -58,8 +58,8 @@ function onExtensionResponse(evt)
 	var cmd = evt.cmd;
 	switch(cmd)
 	{		
-		case "create_map" : 
-			map_init(params["map"]);
+		case "GAME_START" : 
+			map_init(params["MAP"]);
 			map_initialize();
 			$("#game_screen").css("display", "");
 			$("#connect_screen").css("display", "none");
@@ -68,10 +68,13 @@ function onExtensionResponse(evt)
 			alert(params["movement"]);
 			break;
 		case "CONNECTED_USER" : 
-			alert (evt.params.USR_Blob);
+			cnct_addConnectedUser(evt.params);
 			break;
 		case "CONNECTION_SUCCESSFUL" : 
 			cnct_drawConnectionScreen(evt.params);
+			break;
+		case "USR_STATUS" : 
+			cnct_updateUserStatus(evt.params);
 			break;
 		default : break;
 	}

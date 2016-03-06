@@ -6,43 +6,40 @@ import com.smartfoxserver.v2.entities.User;
 
 public class JeuWebUser {
 
-	private final User user;
-	private USER_STATUS status;
-	private Color color;
-	
-	
+	private final User	user;
+	private USER_STATUS	status;
+	private Color		color;
+
 	public JeuWebUser(User user, Color color) {
 		this.user = user;
 		this.status = USER_STATUS.LOGGED;
 		this.color = color;
 	}
-	
-	public boolean isReady()
-	{
-		return this.status == USER_STATUS.READY;
-	}
-	
-	public void ready()
-	{
-		this.status = USER_STATUS.READY;
-	}
-	
-	public User getUser()
-	{
-		return this.user;
+
+	public Color getColor() {
+		return this.color;
 	}
 
 	public USER_STATUS getStatus() {
-		return status;
+		return this.status;
 	}
-	
-	public Color getColor()
-	{
-		return this.color;
+
+	public User getUser() {
+		return this.user;
 	}
-	
-	public void setColor(Color color)
-	{
+
+	public boolean isReady() {
+		return this.status == USER_STATUS.READY;
+	}
+
+	public void ready(boolean flag) {
+		if (flag)
+			this.status = USER_STATUS.READY;
+		else
+			this.status = USER_STATUS.READY;
+	}
+
+	public void setColor(Color color) {
 		this.color = color;
 	}
 }

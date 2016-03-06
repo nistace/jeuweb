@@ -11,21 +11,19 @@ import jeuweb.server.data.connection.JeuWebUser;
 import jeuweb.server.extension.JeuWebExtension;
 
 public class JoinRoomHandler extends BaseClientRequestHandler {
-	
+
 	@Override
 	public void handleClientRequest(User user, ISFSObject arg1) {
 
-		trace("JoinRoomHandler handleClientRequest " + user.getName());
-		JeuWebExtension gameExt = (JeuWebExtension) getParentExtension();
+		this.trace("JoinRoomHandler handleClientRequest " + user.getName());
+		JeuWebExtension gameExt = (JeuWebExtension) this.getParentExtension();
 
-		
 		JeuWebUser newUser = gameExt.addUser(user);
-		{ //answer to the new user
+		{ // answer to the new user
 			ISFSObject respObj = new SFSObject();
 			ISFSArray usersNames = new SFSArray();
-			for (JeuWebUser oUser : gameExt.getAllUsers())
-			{
-				trace(" --- Send to new User : " + oUser.getUser().getName());
+			for (JeuWebUser oUser : gameExt.getAllUsers()) {
+				this.trace(" --- Send to new User : " + oUser.getUser().getName());
 				ISFSArray array = new SFSArray();
 				array.addUtfString(oUser.getUser().getName());
 				usersNames.addUtfString(oUser.getUser().getName());
@@ -36,22 +34,18 @@ public class JoinRoomHandler extends BaseClientRequestHandler {
 			respObj.putSFSArray("USERS_NAMES", usersNames);
 			gameExt.send("CONNECTION_SUCCESSFUL", respObj, user);
 		}
-		
-		{ //notification to the other
+
+		{ // notification to the other
 			ISFSObject respObj = new SFSObject();
 			ISFSArray array = new SFSArray();
 			array.addUtfString(newUser.getUser().getName());
 			array.addUtfString(newUser.getStatus().name());
-			respObj.putSFSArray("USR_" + newUser.getUser().getName(), array);
-			for (JeuWebUser oUser : gameExt.getAllUsers())
-			{ 
-				trace(" --- Send to " + oUser.getUser().getName() + " : " + newUser.getUser().getName());
+			respObj.putSFSArray("USR", array);
+			for (JeuWebUser oUser : gameExt.getAllUsers()) {
+				this.trace(" --- Send to " + oUser.getUser().getName() + " : " + newUser.getUser().getName());
 				if (oUser != newUser)
 					gameExt.send("CONNECTED_USER", respObj, oUser.getUser());
 			}
 		}
-		
-		
 	}
-
 }
